@@ -20,6 +20,14 @@ steps:
       displayName: 'Verify root module with Checkov'
       name: 'checkov_root_check'
 
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)'
+        artifact: 'Checkov results'
+        publishLocation: 'pipeline'
+
+      
+
   # Publish test results for root module
     - task: PublishTestResults@2
       displayName: Publish Checkov Root Test Results
